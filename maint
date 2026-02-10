@@ -1,0 +1,328 @@
+Maintenance Culture Improvement & PM Transformation Plan
+1. Problem Statement (Current State)
+Key Issues Identified
+
+Tool storage & shelves
+
+Poor organization, no ownership
+
+Time wasted searching for tools
+
+Duplicate purchases & missing tools
+
+Preventive Maintenance (PM) execution
+
+PMs are too broad (entire press at once)
+
+Inspections rushed or skipped due to time pressure
+
+Findings are not consistently captured or actioned
+
+PM + Repairs conflict
+
+Inspections and repairs attempted at the same time
+
+Leads to incomplete inspections and reactive work
+
+No proper planning window
+
+Understaffing reality
+
+PM scope does not match available manpower
+
+Technicians forced into firefighting mode
+
+2. Vision & Objectives (Future State)
+Maintenance Vision
+
+Shift from reactive firefighting to planned, equipment-focused maintenance driven by data, ownership, and preparation.
+
+Objectives
+
+Reduce unplanned downtime
+
+Improve PM quality and consistency
+
+Make maintenance work visible, planned, and achievable
+
+Build technician ownership and pride
+
+Improve safety and efficiency
+
+3. Phase 1 – Foundation (Weeks 1–3)
+3.1 Launch Maintenance Culture Reset
+
+Kickoff Meeting (1–1.5 hrs)
+Participants:
+
+Maintenance techs
+
+Maintenance manager/supervisor
+
+Process engineer (you)
+
+Production representative
+
+Agenda:
+
+Why current system isn’t working (facts, not blame)
+
+Explain new direction:
+
+PM ≠ repairs
+
+Inspections first, planning second
+
+Ask techs:
+
+What PMs are unrealistic?
+
+What tools/parts are always missing?
+
+Which machines fail most?
+
+👉 This creates buy-in and ownership early.
+
+3.2 5S Tool Storage Reorganization (Pilot Area First)
+Step 1: Sort
+
+Remove broken, duplicate, unused tools
+
+Tag questionable items (red tags)
+
+Step 2: Set in Order
+
+Assign tools by:
+
+Machine group (Press, Saw, Puller, Stretcher)
+
+Shadow boards with:
+
+Tool outlines
+
+Labels
+
+Frequently used tools at waist height
+
+Step 3: Shine
+
+Clean shelves, drawers, toolboxes
+
+Fix damaged shelving
+
+Step 4: Standardize
+
+Photos of “correct setup”
+
+Simple posted rules:
+
+Tool home location
+
+End-of-shift check
+
+Step 5: Sustain
+
+Assign area ownership (one tech per area)
+
+Weekly 5-minute audit checklist
+
+📌 Deliverable:
+
+One fully 5S’d maintenance area as a model zone
+
+4. Phase 2 – PM System Redesign (Weeks 2–6)
+4.1 Shift From “Press PM” → “Machine-Focused PMs”
+Current (Problem)
+
+One PM for entire press
+
+Too many components
+
+Not enough time → poor execution
+
+Future (Solution)
+
+Break PMs into individual machines:
+
+Example – Press Line:
+
+Billet Saw PM
+
+Billet Oven PM
+
+Press Hydraulics PM
+
+Upper Puller PM
+
+Lower Puller PM
+
+Run-Out Table PM
+
+Finishing Saw PM
+
+Each PM should:
+
+Take 30–90 minutes max
+
+Focus on what actually fails
+
+4.2 PM Structure (Standard Template)
+
+Each PM includes:
+
+Inspection only (no repairs)
+
+Condition-based checks:
+
+Visual
+
+Listen
+
+Feel
+
+Measure (where applicable)
+
+Simple pass/fail or condition scale:
+
+OK
+
+Monitor
+
+Action Required
+
+📌 Rule:
+
+If repair takes >10–15 minutes → log it, don’t fix it during PM.
+
+5. Phase 3 – Separate Inspections from Repairs (Critical Change)
+5.1 Saturday = Inspection & Planning Day
+
+Saturday (Low or No Production)
+
+Perform PM inspections only
+
+Capture:
+
+Findings
+
+Photos
+
+Measurements
+
+Create work orders for:
+
+Repairs
+
+Parts needed
+
+Labor estimates
+
+No major repairs on Saturday unless safety-critical.
+
+5.2 Weekday = Planned Repairs During Production Windows
+
+Repairs scheduled during:
+
+Planned downtime
+
+Changeovers
+
+Assigned maintenance windows
+
+Jobs are:
+
+Pre-planned
+
+Parts staged
+
+Tools ready
+
+📌 This eliminates:
+
+Guesswork
+
+Emergency scrambling
+
+Incomplete jobs
+
+6. Phase 4 – Planning & Visibility (Weeks 4–8)
+6.1 Maintenance Planning Board (Physical or Digital)
+
+Sections:
+
+Backlog (Approved jobs)
+
+This Week
+
+Today
+
+Waiting on Parts
+
+Completed
+
+Each job shows:
+
+Machine
+
+Problem
+
+Estimated time
+
+Priority
+
+6.2 PM Frequency Based on Risk (Not Calendar Only)
+Equipment	Failure Impact	PM Frequency
+Finishing Saw	High	Weekly
+Puller	High	Weekly
+Billet Oven	Medium	Bi-weekly
+Press Hydraulics	High	Monthly
+Conveyors	Low	Monthly
+7. Phase 5 – Metrics & Sustainment (Week 8+)
+7.1 Track the Right Metrics
+
+% PMs completed on time
+
+of PM findings → planned work orders
+
+Emergency breakdowns per month
+
+Downtime by machine (Pareto)
+
+7.2 Monthly Review (30 mins)
+
+What PMs found issues early?
+
+What failures were still surprises?
+
+Adjust PM content, not just frequency
+
+8. Roles & Ownership
+Role	Responsibility
+Maintenance Techs	Execute PMs, log findings
+Maintenance Supervisor	Schedule, approve backlog
+Process Engineer (You)	Data analysis, PM optimization
+Production	Protect PM & repair windows
+9. Expected Outcomes
+Short Term (1–2 months)
+
+Faster tool access
+
+Better PM completion quality
+
+Clear repair planning
+
+Medium Term (3–6 months)
+
+Reduced emergency breakdowns
+
+Improved technician morale
+
+Better downtime data
+
+Long Term
+
+Strong maintenance culture
+
+Predictable maintenance workload
+
+Data-driven reliability improvements

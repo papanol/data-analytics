@@ -1,0 +1,199 @@
+Goal layout (recommended)
+
+Sheet: Dashboard
+
+Chart 1: chtEquipPareto (Equipment Pareto = all equipment)
+
+Chart 2: chtDTCodesPareto (DT Codes Pareto = depends on selected equipment)
+
+A cell like B2 that shows selected equipment (optional)
+
+Sheet: Pivots
+
+Pivot 1: ptEquip → feeds Chart 1 (Equipment totals)
+
+Pivot 2: ptDT → feeds Chart 2 (DT Codes totals)
+
+Pivot fields include: Equipment, DT_Code, Downtime_Min
+
+Step-by-step
+Step 1) Build the 2 PivotTables
+Pivot A (Equipment Pareto)
+
+On Pivots sheet:
+
+Rows: Equipment
+
+Values: Sum of Downtime_Min
+
+Sort Largest to Smallest
+
+Pivot B (DT Codes Pareto)
+
+On Pivots sheet:
+
+Rows: DT_Code
+
+Values: Sum of Downtime_Min
+
+Add Equipment to Filters area (VERY IMPORTANT)
+
+Sort Largest to Smallest
+
+✅ This “Equipment” filter is what VBA will change automatically.
+
+Step 2) Create the 2 Pareto charts
+
+On Dashboard:
+
+Insert Chart 1 from Pivot A → name it: chtEquipPareto
+
+Insert Chart 2 from Pivot B → name it: chtDTCodesPareto
+
+Name charts
+
+Click chart
+
+In Name Box (left of formula bar) type:
+
+chtEquipPareto
+
+chtDTCodesPareto
+
+Step 3) Name your PivotTables (important for code)
+
+Click each pivot → PivotTable Analyze → (far left) PivotTable Name:
+
+Equipment Pivot: ptEquip
+
+DT Code Pivot: ptDT
+
+Also confirm Pivot B has a field exactly called:
+
+Equipment (filter field)
+
+DT_Code
+
+Step 4) Add the VBA “click a bar” event (real click)
+4A) Open VBA
+
+Developer → Visual Basic
+
+4B) Insert a Class Module
+
+Insert → Class Module
+Rename it (in Properties) to: CChartEvents
+
+Paste this inside CChartEvents:
+
+Option Explicit
+Public WithEvents cht As Chart
+
+Private Sub cht_MouseUp(ByVal Button As Long, ByVal Shift As Long, ByVal x As Long, ByVal y As Long)
+
+    Dim elemID As Long, arg1 As Long, arg2 As Long
+    Dim equipName As String
+
+    'Figure out what was clicked
+    cht.GetChartElement x, y, elemID, arg1, arg2
+
+    'We only care about clicking a data point (a bar)
+    If elemID <> xlSeries Then Exit Sub
+    If arg2 = 0 Then Exit Sub   'point index
+
+    'Read the category label (equipment name) from the x-axis values
+    equipName = CStr(cht.SeriesCollection(1).XValues(arg2))
+
+    'Drilldown: filter DT-code pivot to this equipment
+    DrillToEquipment equipName
+
+End Sub
+
+Step 5) Create the macro that filters the DT-code pivot
+
+Insert → Module, paste:
+
+Option Explicit
+
+Public Sub DrillToEquipment(ByVal equipName As String)
+
+    Dim wsP As Worksheet
+    Dim ptDT As PivotTable
+    Dim pf As PivotField
+
+    Set wsP = ThisWorkbook.Worksheets("Pivots")
+    Set ptDT = wsP.PivotTables("ptDT")
+    Set pf = ptDT.PivotFields("Equipment")
+
+    Application.ScreenUpdating = False
+
+    'Apply equipment filter
+    pf.ClearAllFilters
+    pf.CurrentPage = equipName
+
+    'Optional: show selection on dashboard cell
+    ThisWorkbook.Worksheets("Dashboard").Range("B2").Value = equipName
+
+    Application.ScreenUpdating = True
+
+End Sub
+
+
+✅ This makes Pivot B (DT Codes Pareto) show only DT codes for clicked equipment.
+
+Step 6) “Wire” the chart to the click event
+
+We need to connect the dashboard chart to the event class.
+
+6A) In ThisWorkbook object (VBAProject)
+
+Double-click ThisWorkbook, paste:
+
+Option Explicit
+Private chartHandler As CChartEvents
+
+Private Sub Workbook_Open()
+    Set chartHandler = New CChartEvents
+    Set chartHandler.cht = ThisWorkbook.Worksheets("Dashboard").ChartObjects("chtEquipPareto").Chart
+End Sub
+
+6B) Important
+
+Close the file, reopen it (so Workbook_Open runs).
+
+Step 7) Test
+
+Go to Dashboard
+
+Click a bar in Equipment Pareto
+
+DT Codes Pareto should instantly update to show DT codes only for that equipment
+
+Common issues (quick fixes)
+1) “Unable to set CurrentPage…”
+
+That means the clicked equipment text doesn’t exactly match the Pivot filter items.
+Fix by:
+
+making sure Pivot equipment labels and chart labels are identical, OR
+
+add a mapping (I can give you a short mapping function if your names vary like “Saw” vs “Extrusion Saw”).
+
+2) Nothing happens when clicking bars
+
+You didn’t reopen workbook after adding Workbook_Open
+
+Chart name mismatch (chtEquipPareto)
+
+Sheet name mismatch (Dashboard, Pivots)
+
+Bonus (nice UX)
+
+Add a “Reset” button that clears equipment filter to show all DT codes:
+
+Public Sub ResetDTFilter()
+    Dim ptDT As PivotTable
+    Set ptDT = ThisWorkbook.Worksheets("Pivots").PivotTables("ptDT")
+    ptDT.PivotFields("Equipment").ClearAllFilters
+    ThisWorkbook.Worksheets("Dashboard").Range("B2").Value = "All Equipment"
+End Sub
